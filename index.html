@@ -9,6 +9,7 @@
       margin: 0;
     }
 
+    /* Bandeau supérieur */
     .top-banner {
       position: fixed;
       top: 0;
@@ -17,7 +18,7 @@
       height: 8vh;
       display: flex;
       align-items: center;
-      background-color: #C00475; /* Couleur initiale */
+      background-color: #C00475;
       transition: background-color 1s ease-in-out;
       z-index: 999;
       padding: 0 1em;
@@ -29,37 +30,7 @@
       object-fit: contain;
     }
 
-    @media (max-width: 600px) {
-      .top-banner {
-        padding: 0 0.5em;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="top-banner" id="banner">
-    <img src="tts.webp" alt="Graduation Kids">
-  </div>
-
-  <script>
-    const banner = document.getElementById('banner');
-    const colors = ['#C00475']; // Couleurs alternatives
-    let index = 0;
-
-    setInterval(() => {
-      index = (index + 1) % colors.length;
-      banner.style.backgroundColor = colors[index];
-    }, 15000);
-  </script>
-
-
-
-
-
-
-  <style>
-
+    /* Slider de fond */
     .slider-container {
       position: fixed;
       top: 8vh;
@@ -83,8 +54,8 @@
     .slide img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Image entière visible, sans recadrage */
-      opacity: 0.7;         /* Transparence */
+      object-fit: contain;
+      opacity: 0.7;
       display: block;
     }
 
@@ -92,10 +63,24 @@
       opacity: 1;
       z-index: 1;
     }
-  </style>
 
+    @media (max-width: 600px) {
+      .top-banner {
+        padding: 0 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bandeau fixe -->
+  <div class="top-banner" id="banner">
+    <img src="tts.webp" alt="Graduation Kids">
+  </div>
+
+  <!-- Slider d'images en fond -->
   <div class="slider-container">
-    <div class="slide"><img src="image1.jpg" alt="Image 1"></div>
+    <div class="slide active"><img src="image1.jpg" alt="Image 1"></div>
     <div class="slide"><img src="tt.webp" alt="Image 2"></div>
     <div class="slide"><img src="tts.webp" alt="Image 3"></div>
     <div class="slide"><img src="cha.webp" alt="Image 4"></div>
@@ -103,8 +88,19 @@
   </div>
 
   <script>
+    // Animation de fond du bandeau (si tu veux changer les couleurs)
+    const banner = document.getElementById('banner');
+    const colors = ['#C00475']; // Tu peux ajouter d’autres couleurs ici
+    let colorIndex = 0;
+
+    setInterval(() => {
+      colorIndex = (colorIndex + 1) % colors.length;
+      banner.style.backgroundColor = colors[colorIndex];
+    }, 15000);
+
+    // Animation du slider en fondu
     const slides = document.querySelectorAll('.slide');
-    let index = 0;
+    let slideIndex = 0;
 
     function showSlide(i) {
       slides.forEach((slide, idx) => {
@@ -112,19 +108,17 @@
       });
     }
 
-    showSlide(index);
+    showSlide(slideIndex); // Afficher dès le chargement
+
     setInterval(() => {
-      index = (index + 1) % slides.length;
-      showSlide(index);
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide(slideIndex);
     }, 15000); // Changement toutes les 15 secondes
   </script>
 
-
-
-  
-
 </body>
 </html>
+
 
 
 
