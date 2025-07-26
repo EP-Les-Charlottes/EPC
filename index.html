@@ -125,3 +125,65 @@
 
 
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding-bottom: 6vh; /* espace réservé pour la barre défilante */
+    }
+
+    .scroll-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6vh;
+      background-color: #C00475;
+      color: white;
+      font-size: 2.4vh;
+      font-family: sans-serif;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .scroll-banner .text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scrollText 80s linear infinite;
+    }
+
+    @keyframes scrollText {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barre défilante en bas -->
+  <div class="scroll-banner">
+    <div class="text">
+      ÉCOLE PRIVÉE LES CHARLOTTE est une école conventionnée pour la rentrée scolaire de septembre 2025. Frais attractifs, environnement propre et sécurisé, salles de classe spacieuses et climatisées, bibliothèque, salle informatique, garderie, cantine et infirmerie. Programme français avec un corps enseignant expérimenté et passionné, activités extrascolaires et ateliers spécifiques. Située à Amissa Transfo (voie parallèle). Contact : +241 77 68 38 68 ou +241 62 68 38 68. École Privée Les Charlotte : une garantie pour l'éducation de vos enfants.
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
