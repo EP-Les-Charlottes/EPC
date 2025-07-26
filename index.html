@@ -65,6 +65,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
 
     .slider-container {
       position: fixed;
@@ -76,54 +81,60 @@
       z-index: -2;
     }
 
-    .slider-wrapper {
-      display: flex;
-      width: 500%; /* 5 images */
-      height: 100%;
-      animation: slide 25s infinite;
-    }
-
     .slide {
-      flex: 1 0 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
     }
 
     .slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain; /* Image entière visible, sans recadrage */
+      opacity: 0.4;         /* Transparence */
       display: block;
-      opacity: 0.4; /* Effet de transparence */
-      filter: blur(0px); /* Tu peux ajouter un léger flou si désiré */
     }
 
-    @keyframes slide {
-      0%    { transform: translateX(0%); }
-      20%   { transform: translateX(0%); }
-      25%   { transform: translateX(-100%); }
-      45%   { transform: translateX(-100%); }
-      50%   { transform: translateX(-200%); }
-      70%   { transform: translateX(-200%); }
-      75%   { transform: translateX(-300%); }
-      95%   { transform: translateX(-300%); }
-      100%  { transform: translateX(-400%); }
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
 
   <div class="slider-container">
-    <div class="slider-wrapper">
-      <div class="slide"><img src="image1.jpg" alt="Image 1"></div>
-      <div class="slide"><img src="tt.webp" alt="Image 2"></div>
-      <div class="slide"><img src="tts.webp" alt="Image 3"></div>
-      <div class="slide"><img src="cha.webp" alt="Image 4"></div>
-      <div class="slide"><img src="image5.jpg" alt="Image 5"></div>
-    </div>
+    <div class="slide"><img src="image1.jpg" alt="Image 1"></div>
+    <div class="slide"><img src="tt.webp" alt="Image 2"></div>
+    <div class="slide"><img src="tts.webp" alt="Image 3"></div>
+    <div class="slide"><img src="cha.webp" alt="Image 4"></div>
+    <div class="slide"><img src="image5.jpg" alt="Image 5"></div>
   </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let index = 0;
+
+    function showSlide(i) {
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle('active', idx === i);
+      });
+    }
+
+    showSlide(index);
+    setInterval(() => {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }, 5000); // Changement toutes les 5 secondes
+  </script>
 
 </body>
 </html>
+
 
 
 
