@@ -1,31 +1,58 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Les Char</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="tt.webp" type="image/png">
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background-color: #C00475;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
     }
-    .text {
-      font-family: Impact, Arial Black, sans-serif;
-      font-size: 100px;
-      font-weight: bold;
-      color: orange;
-      text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
-      white-space: nowrap;
+
+    .top-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8vh;
+      display: flex;
+      align-items: center;
+      background-color: #C00475; /* Couleur initiale */
+      transition: background-color 1s ease-in-out;
+      z-index: 999;
+      padding: 0 1em;
+    }
+
+    .top-banner img {
+      height: 80%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    @media (max-width: 600px) {
+      .top-banner {
+        padding: 0 0.5em;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="text">Les Char</div>
+
+  <div class="top-banner" id="banner">
+    <img src="tt.webp" alt="Graduation Kids">
+  </div>
+
+  <script>
+    const banner = document.getElementById('banner');
+    const colors = ['#C00475', '#FF5722', '#4CAF50', '#2196F3', '#FF9800']; // Couleurs alternatives
+    let index = 0;
+
+    setInterval(() => {
+      index = (index + 1) % colors.length;
+      banner.style.backgroundColor = colors[index];
+    }, 15000);
+  </script>
+
 </body>
 </html>
 
