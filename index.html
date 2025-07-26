@@ -130,10 +130,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>École Privée Les Charlotte</title>
   <style>
     body {
       margin: 0;
-      padding-bottom: 6vh; /* espace réservé pour la barre défilante */
+      padding-bottom: 6vh;
     }
 
     .scroll-banner {
@@ -171,16 +172,45 @@
 </head>
 <body>
 
-  <!-- Barre défilante en bas -->
+  <!-- Bandeau défilant -->
   <div class="scroll-banner">
     <div class="text">
       ÉCOLE PRIVÉE LES CHARLOTTE est une école conventionnée pour la rentrée scolaire de septembre 2025. Frais attractifs, environnement propre et sécurisé, salles de classe spacieuses et climatisées, bibliothèque, salle informatique, garderie, cantine et infirmerie. Programme français avec un corps enseignant expérimenté et passionné, activités extrascolaires et ateliers spécifiques. Située à Amissa Transfo (voie parallèle). Contact : +241 77 68 38 68 ou +241 62 68 38 68. École Privée Les Charlotte : une garantie pour l'éducation de vos enfants.
     </div>
   </div>
 
+  <!-- Lecture vocale automatique -->
+  <script>
+    const texte = "ÉCOLE PRIVÉE LES CHARLOTTE est une école conventionnée pour la rentrée scolaire de septembre 2025. Frais attractifs, environnement propre et sécurisé, salles de classe spacieuses et climatisées, bibliothèque, salle informatique, garderie, cantine et infirmerie. Programme français avec un corps enseignant expérimenté et passionné, activités extrascolaires et ateliers spécifiques. Située à Amissa Transfo (voie parallèle). Contact : +241 77 68 38 68 ou +241 62 68 38 68. École Privée Les Charlotte : une garantie pour l'éducation de vos enfants.";
+
+    window.onload = function () {
+      const synth = window.speechSynthesis;
+
+      function lireTexte() {
+        const voix = synth.getVoices().find(v =>
+          v.lang === "fr-FR" && v.name.toLowerCase().includes("female")
+        ) || synth.getVoices().find(v => v.lang === "fr-FR");
+
+        if (voix) {
+          const utterance = new SpeechSynthesisUtterance(texte);
+          utterance.voice = voix;
+          utterance.rate = 1;
+          utterance.pitch = 1;
+          synth.speak(utterance);
+        }
+      }
+
+      // Attendre que les voix soient chargées
+      if (synth.onvoiceschanged !== undefined) {
+        synth.onvoiceschanged = lireTexte;
+      } else {
+        setTimeout(lireTexte, 500);
+      }
+    };
+  </script>
+
 </body>
 </html>
-
 
 
 
