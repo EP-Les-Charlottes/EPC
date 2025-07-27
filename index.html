@@ -208,6 +208,25 @@
         setTimeout(lireTexte, 500);
       }
     };
+
+
+    function lireTexte() {
+  const synth = window.speechSynthesis;
+  const voix = synth.getVoices().find(v =>
+    v.lang === "fr-FR" && v.name.toLowerCase().includes("female")
+  ) || synth.getVoices().find(v => v.lang === "fr-FR");
+
+  if (voix) {
+    const utterance = new SpeechSynthesisUtterance(texte);
+    utterance.voice = voix;
+    utterance.rate = 1;
+    utterance.pitch = 1;
+    synth.speak(utterance);
+  } else {
+    console.warn("Voix FR non disponible pour le moment");
+  }
+}
+
   </script>
 
 
