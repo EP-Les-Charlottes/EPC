@@ -366,7 +366,7 @@
   // ✅ Démarre la musique à la première interaction
   const initMusiqueAuto = () => {
     if (!musiqueInitiee) {
-      musiqueFond.volume = 0.3;
+      musiqueFond.volume = 0.5;
       musiqueFond.play().then(() => {
         musiqueInitiee = true;
         stopBtn.textContent = '⏸';
