@@ -235,18 +235,13 @@
     object-fit: contain;
   }
 
-  /* Bouton sous la barre fixe */
+  /* Bouton sous la barre fixe, aligné à droite */
   .button-container {
     position: fixed;
     top: 8vh;
-    left: 0;
-    width: 100%;
+    right: 1em;
     height: 5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 998;
-    background-color: #f0f0f0;
   }
 
   .button-container button {
@@ -280,8 +275,11 @@
     object-fit: contain;
   }
 
+  /* Bouton de fermeture en haut à droite */
   .close-btn {
-    margin-top: 1em;
+    position: absolute;
+    top: 1em;
+    right: 1em;
     padding: 0.5em 1em;
     font-size: 1em;
     background-color: #C00475;
@@ -289,6 +287,7 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    z-index: 10001;
   }
 
   @media (max-width: 768px) {
@@ -297,7 +296,7 @@
     }
 
     .button-container {
-      display: flex;
+      right: 1em;
     }
   }
 </style>
@@ -309,13 +308,13 @@
 
 <!-- Image à droite sur PC -->
 <div class="image-right" id="imageRight">
-  <img src="image6.jpg" alt="Image à droite">
+  <img src="rsg.webp" alt="Image à droite">
 </div>
 
 <!-- Image plein écran sur mobile -->
 <div class="image-fullscreen" id="imageFullscreen">
-  <img src="rsg.webp" alt="Image mobile">
   <button class="close-btn" onclick="closeFullscreen()">Fermer</button>
+  <img src="image6.jpg" alt="Image mobile">
 </div>
 
 <script>
