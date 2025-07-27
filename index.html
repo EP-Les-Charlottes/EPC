@@ -338,6 +338,42 @@
 
 
 
+
+
+  <audio id="fondAudio" src="00mp3.mp3" loop></audio>
+
+<!-- Bouton interactif en bas à gauche -->
+<div style="position:fixed; bottom:9vh; left:1em; z-index:999;">
+  <button onclick="toggleAudio()" id="audioBtn" style="
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #C00475;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.9;">
+    ▶️
+  </button>
+</div>
+
+<script>
+  const audio = document.getElementById('fondAudio');
+  const btn = document.getElementById('audioBtn');
+
+  function toggleAudio() {
+    if (audio.paused) {
+      audio.play();
+      btn.innerText = '⏸️ Pause';
+    } else {
+      audio.pause();
+      btn.innerText = '▶️ Écouter';
+    }
+  }
+</script>
+
+
+
   
 
 </body>
