@@ -295,6 +295,21 @@
     z-index: 9999;
   }
 
+  .image-right .close-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  background-color: #C00475;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+
   @media (max-width: 768px) {
     .image-right {
       display: none !important;
@@ -305,6 +320,9 @@
     }
   }
 </style>
+
+  <button class="close-btn" onclick="closeImageRight()">Fermer</button>
+
 
 <!-- Bouton d'affichage -->
 <div class="button-container">
@@ -333,6 +351,10 @@
     }
   }
 
+  function closeImageRight() {
+  document.getElementById('imageRight').style.display = 'none';
+  }
+  
   function closeFullscreen() {
     document.getElementById('imageFullscreen').style.display = 'none';
   }
