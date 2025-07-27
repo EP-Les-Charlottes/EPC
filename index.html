@@ -356,6 +356,8 @@
     ▶️
   </button>
 </div>
+<button onclick="initMusiqueAuto(); lireTexte();" style="position:fixed; bottom:11vh; left:1em; z-index:999; 
+  padding:0.5em 1em; font-size:1em; background-color:#C00475; color:white; border:none; border-radius:4px;">🎧 Activer l'ambiance vocale</button>
 
 <script>
   const musiqueFond = document.getElementById('musique-fond');
@@ -393,6 +395,24 @@
       }
     }
   });
+
+
+function lireTexte() {
+  const synth = window.speechSynthesis;
+  const voix = synth.getVoices().find(v =>
+    v.lang === "fr-FR" && v.name.toLowerCase().includes("female")
+  ) || synth.getVoices().find(v => v.lang === "fr-FR");
+
+  if (voix) {
+    const utterance = new SpeechSynthesisUtterance(texte);
+    utterance.voice = voix;
+    utterance.rate = 1;
+    utterance.pitch = 1;
+    synth.speak(utterance);
+  }
+}
+
+  
 </script>
 
 
