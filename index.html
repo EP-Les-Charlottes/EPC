@@ -340,11 +340,11 @@
 
 
 
-  <audio id="fondAudio" src="00mp3.mp3" loop></audio>
+<audio id="musique-fond" src="00mp3.mp3" loop></audio>
 
-<!-- Bouton interactif en bas à gauche -->
+<!-- Bouton interactif -->
 <div style="position:fixed; bottom:9vh; left:1em; z-index:999;">
-  <button onclick="toggleAudio()" id="audioBtn" style="
+  <button id="stop-musique" style="
     padding: 0.5em 1em;
     font-size: 1em;
     background-color: #C00475;
@@ -352,26 +352,48 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    opacity: 0.9;">
+    opacity: 0.95;">
     ▶️
   </button>
 </div>
 
 <script>
-  const audio = document.getElementById('fondAudio');
-  const btn = document.getElementById('audioBtn');
+  const musiqueFond = document.getElementById('musique-fond');
+  const stopBtn = document.getElementById('stop-musique');
 
-  function toggleAudio() {
-    if (audio.paused) {
-      audio.play();
-      btn.innerText = '⏸️ Pause';
-    } else {
-      audio.pause();
-      btn.innerText = '▶️ Écouter';
+  let musiqueInitiee = false;
+
+  // ✅ Démarre la musique à la première interaction
+  const initMusiqueAuto = () => {
+    if (!musiqueInitiee) {
+      musiqueFond.volume = 0.3;
+      musiqueFond.play().then(() => {
+        musiqueInitiee = true;
+        stopBtn.textContent = '⏸';
+      }).catch(err => {
+        console.warn("Lecture automatique bloquée :", err);
+      });
     }
-  }
-</script>
+  };
 
+  // ⚠️ Premier clic sur la page déclenche la musique
+  window.addEventListener('click', initMusiqueAuto, { once: true });
+
+  // 🎵 Bouton lecture / pause
+  stopBtn.addEventListener('click', () => {
+    if (!musiqueInitiee) {
+      initMusiqueAuto();
+    } else {
+      if (musiqueFond.paused) {
+        musiqueFond.play();
+        stopBtn.textContent = '⏸';
+      } else {
+        musiqueFond.pause();
+        stopBtn.textContent = '▶️';
+      }
+    }
+  });
+</script>
 
 
   
