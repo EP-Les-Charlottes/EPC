@@ -225,7 +225,41 @@
   } else {
     console.warn("Voix FR non disponible pour le moment");
   }
-}
+};
+
+
+    <script>
+  const texte = "ÉCOLE PRIVÉE LES CHARLOTTE est une école conventionnée pour la rentrée scolaire de septembre 2025. Frais attractifs, environnement propre et sécurisé, salles de classe spacieuses et climatisées, bibliothèque, salle informatique, garderie, cantine et infirmerie. Programme français avec un corps enseignant expérimenté et passionné, activités extrascolaires et ateliers spécifiques. Située à Amissa Transfo (dans la voie parallèle). Contact : +241 77 68 38 68 ou +241 62 68 38 68. École Privée Les Charlotte : une garantie pour l'éducation de vos enfants.";
+
+  const synth = window.speechSynthesis;
+  let voixFR = null;
+
+  function initVoix() {
+    const voix = synth.getVoices();
+    voixFR = voix.find(v => v.lang === "fr-FR" && v.name.toLowerCase().includes("female")) || voix.find(v => v.lang === "fr-FR");
+  }
+
+  function lireTexte() {
+    if (voixFR && !synth.speaking) {
+      const utterance = new SpeechSynthesisUtterance(texte);
+      utterance.voice = voixFR;
+      utterance.rate = 1;
+      utterance.pitch = 1;
+      synth.speak(utterance);
+    }
+  }
+
+  // Charger les voix (desktop + mobile)
+  if (synth.onvoiceschanged !== undefined) {
+    synth.onvoiceschanged = initVoix;
+  } else {
+    setTimeout(initVoix, 500);
+  }
+
+  // Lecture vocale déclenchée par premier clic utilisateur
+  window.addEventListener('click', lireTexte, { once: true });
+</script>
+
 
   </script>
 
