@@ -511,24 +511,75 @@
   pointer-events: auto;
 }
 
+#shareModule {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+#shareToggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+#shareToggle img {
+  width: 32px;
+  height: 32px;
+}
+
+#shareBox {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+#shareBox button {
+  font-size: 14px;
+  background: #f2f2f2;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+}
 
 </style>
   
-<div class="share-wrapper">
-  <div class="share-options">
-    <a href="#"><img src="Facebook_f_logo_(2019).svg" alt="Facebook"></a>
-    <a href="#"><img src="tiktok.jpg" alt="TikTok"></a>
-    <a href="#"><img src="WhatsApp.svg" alt="WhatsApp"></a>
-  </div>
-  <button id="share-button">
-    <img src="partage.svg" alt="Partager">
+<div id="shareModule">
+  <button id="shareToggle" title="Partager">
+    <img src="assets/svg/share.svg" alt="Share Icon" />
   </button>
+  <div id="shareBox">
+    <button onclick="copyShareLink()">Copier le lien</button>
+    <button onclick="window.open('https://wa.me/?text=' + encodeURIComponent(location.href))">Partager via WhatsApp</button>
+  </div>
 </div>
+
 
 <script>
 document.getElementById('share-button').addEventListener('click', function() {
   document.querySelector('.share-wrapper').classList.toggle('active');
 });
+
+  document.getElementById('shareToggle').addEventListener('click', () => {
+  const box = document.getElementById('shareBox');
+  box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+});
+
+function copyShareLink() {
+  navigator.clipboard.writeText(location.href).then(() => {
+    alert('Lien copié !');
+  });
+}
+
 </script>
 
 
