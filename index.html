@@ -469,7 +469,58 @@
                 <span>Akanda / Amissa transfo </span>
             </button>
 
+<style>
+  .share-wrapper {
+  position: fixed;
+  bottom: 10%;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+}
 
+#share-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.share-options {
+  display: flex;
+  gap: 10px;
+  margin-right: 10px;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.share-wrapper.active .share-options {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+</style>
+<div class="share-wrapper">
+  <button id="share-button">
+    <img src="partage.svg" alt="Partager">
+  </button>
+  <div class="share-options">
+    <a href="#"><img src="facebook.svg" alt="Facebook"></a>
+    <a href="#"><img src="tictoc.svg" alt="TikTok"></a>
+    <a href="#"><img src="whatsapp.svg" alt="WhatsApp"></a>
+  </div>
+</div>
+<script>
+document.getElementById('share-button').addEventListener('click', function() {
+  document.querySelector('.share-wrapper').classList.toggle('active');
+});
+</script>
+
+
+
+  
 
 </body>
 </html>
