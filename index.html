@@ -470,45 +470,6 @@
             </button>
 
 
-<div class="share-wrapper">
-  <img src="partage.svg" alt="Partager" class="social-icon" onclick="toggleShareSlide()" />
-  <div id="share-slide" class="share-slide">
-    <a id="share-facebook" href="#" target="_blank">
-      <img src="Facebook_f_logo_%282019%29.svg" alt="Partager sur Facebook">
-    </a>
-    <a id="share-tiktok" href="#" target="_blank">
-      <img src="tiktok-logo-on-transparent-background-free-vector.jpg" alt="Copier pour TikTok">
-    </a>
-    <a id="share-whatsapp" href="#" target="_blank">
-      <img src="WhatsApp.svg" alt="Partager sur WhatsApp">
-    </a>
-  </div>
-</div>
-
-  <script>
-
-function toggleShareSlide() {
-  const slide = document.getElementById('share-slide');
-  slide.classList.toggle('show');
-
-  const url = encodeURIComponent(window.location.href);
-
-  // Liens dynamiques
-  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-  document.getElementById('share-whatsapp').href = `https://wa.me/?text=${url}`;
-
-  // TikTok copie dans le presse-papiers
-  document.getElementById('share-tiktok').onclick = function(e) {
-    e.preventDefault();
-    navigator.clipboard.writeText(window.location.href);
-    alert("Lien copié pour TikTok !");
-  };
-}
-
-    
-  </script>
-
-
 
 
 
