@@ -471,9 +471,97 @@
 
 
 
+<!-- Bouton Partage -->
+<div class="share-wrapper">
+  <button class="share-btn" onclick="toggleShareOptions()">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+      <path fill="white" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 0 0 18 7.91a3 3 0 1 0-2.83-4A2.99 2.99 0 0 0 12 6.5c0 .24.04.47.09.7L5.03 11.31A3 3 0 0 0 6 16a3 3 0 0 0 2.83-4 2.99 2.99 0 0 0-.09-.7l7.05 4.11c.52.47 1.2.77 1.96.77a3 3 0 1 0 0-6z"/>
+    </svg>
+  </button>
+
+  <div class="share-options" id="shareOptions">
+    <a href="#" onclick="shareFacebook()" title="Partager sur Facebook">FB</a>
+    <a href="#" onclick="shareWhatsApp()" title="Partager sur WhatsApp">WA</a>
+    <a href="#" onclick="shareTikTok()" title="Partager sur TikTok">TT</a>
+  </div>
+</div>
 
           
+<style> 
+  .share-wrapper {
+  position: fixed;
+  bottom: 12.5vh;
+  right: 3px;
+  z-index: 1000;
+  text-align: center;
+}
 
+.share-btn {
+  background-color: #C00475;
+  border: none;
+  border-radius: 25px;
+  padding: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.share-btn:hover {
+  background-color: #aa0363;
+  transform: translateY(-2px);
+}
+
+.share-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.share-options {
+  margin-top: 6px;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+}
+
+.share-options a {
+  display: block;
+  font-size: 14px;
+  background-color: #642EFE;
+  color: white;
+  text-align: center;
+  padding: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.share-options a:hover {
+  background-color: #5a25c2;
+}
+</style>
+<script>
+  function toggleShareOptions() {
+    const bloc = document.getElementById('shareOptions');
+    bloc.style.display = bloc.style.display === 'none' || bloc.style.display === '' ? 'flex' : 'none';
+  }
+
+  function shareFacebook() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.facebook.com/sharer.php?u=${url}`, '_blank');
+  }
+
+  function shareWhatsApp() {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://wa.me/?text=${url}`, '_blank');
+  }
+
+  function shareTikTok() {
+    const url = encodeURIComponent(window.location.href);
+    alert("TikTok ne propose pas de partage direct par URL sur navigateur.\nCopiez l'adresse : " + window.location.href);
+  }
+</script>
 
 </body>
 </html>
