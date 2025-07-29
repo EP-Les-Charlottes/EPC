@@ -496,6 +496,40 @@
   object-fit: contain;
 }
 
+  .slide-box {
+  position: fixed;
+  right: 60px;
+  bottom: 12%;
+  background: rgba(255,255,255,0.95);
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transform: translateX(80px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 9998;
+}
+
+.slide-box.show {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.slide-box img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.slide-box img:hover {
+  transform: scale(1.2);
+}
+
 </style>
   
 <button id="fixedShareBtn" title="Partager">
@@ -513,7 +547,18 @@
   </a>
 </div>
 
+<script>
+document.getElementById('fixedShareBtn').addEventListener('click', () => {
+  const slide = document.getElementById('shareSlide');
+  slide.classList.toggle('show');
 
+  const url = encodeURIComponent(window.location.href);
+  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  document.getElementById('share-whatsapp').href = `https://wa.me/?text=${url}`;
+  document.getElementById('share-tiktok').href = `https://www.tiktok.com/upload?url=${url}`;
+});
+
+</script>
 
   
 </body>
