@@ -474,6 +474,95 @@
 
 
 
+
+
+
+
+
+
+
+<style>
+.share-wrapper {
+  position: fixed;
+  bottom: 9vh;
+  right: 50px; /* ajuste pour qu’il ne gêne pas le bouton localisation */
+  z-index: 1000;
+}
+
+.share-slide {
+  position: absolute;
+  right: -180px;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateX(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.share-slide.show {
+  transform: translateX(-212px);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.share-slide img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.share-slide img:hover {
+  transform: scale(1.2);
+}
+</style>
+
+
+
+
+
+
+  
+<div class="share-wrapper">
+  <img src="partage.svg" alt="Partager" class="social-icon" onclick="toggleShareSlide()" />
+  <div id="share-slide" class="share-slide">
+    <a id="share-facebook" href="#" target="_blank">
+      <img src="Facebook_f_logo_(2019).svg" alt="Partager sur Facebook">
+    </a>
+    <a id="share-tiktok" href="#" target="_blank">
+      <img src="tiktok-logo-on-transparent-background-free-vector.jpg" alt="Partager sur TikTok">
+    </a>
+    <a id="share-whatsapp" href="#" target="_blank">
+      <img src="WhatsApp.svg" alt="Partager sur WhatsApp">
+    </a>
+  </div>
+</div>
+<script>
+function toggleShareSlide() {
+  const slide = document.getElementById('share-slide');
+  slide.classList.toggle('show');
+
+  const url = encodeURIComponent(window.location.href);
+
+  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  document.getElementById('share-whatsapp').href = `https://wa.me/?text=${url}`;
+
+  document.getElementById('share-tiktok').onclick = function(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText(window.location.href);
+    alert("📋 Lien copié pour TikTok !");
+  };
+}
+</script>
+
+
+
+
           
 
 
