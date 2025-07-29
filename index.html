@@ -472,40 +472,46 @@
 
 
 <style>
-  .share-wrapper {
-  position: fixed; background-color:#C00475;
+ .share-wrapper {
+  position: fixed;
   bottom: 11%;
   right: 10px;
-  display: flex;
-  align-items: center;
   z-index: 9999;
 }
 
+/* Le bouton reste fixe */
 #share-button {
   background: none;
   border: none;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
-.share-options {
-  display: flex;
-  gap: 10px;
-  margin-right: 10px;
-  opacity: 0;
-  transform: translateX(50px);
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.share-wrapper.active .share-options {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
 #share-button img {
   max-width: 45px;
   max-height: 45px;
   object-fit: contain;
+}
+
+/* Les options de partage glissent AU-DESSUS du bouton */
+.share-options {
+  position: absolute;
+  right: 100%; /* commence à droite du bouton */
+  top: 50%;
+  transform: translateY(-50%) translateX(50px);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.share-wrapper.active .share-options {
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 </style>
