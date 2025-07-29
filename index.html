@@ -478,11 +478,11 @@
 
 <style>
   #fixedShareBtn {
-  position: fixed;
+  position: fixed; border-radius:12px;
   right: 10px;
   bottom: 12%;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   background: green;
   border: none;
   padding: 0;
@@ -552,11 +552,13 @@ document.getElementById('fixedShareBtn').addEventListener('click', () => {
   const slide = document.getElementById('shareSlide');
   slide.classList.toggle('show');
 
+  // Génère les liens à chaque clic
   const url = encodeURIComponent(window.location.href);
-  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-  document.getElementById('share-whatsapp').href = `https://wa.me/?text=${url}`;
-  document.getElementById('share-tiktok').href = `https://www.tiktok.com/upload?url=${url}`;
+  document.getElementById('share-facebook').setAttribute("href", `https://www.facebook.com/sharer/sharer.php?u=${url}`);
+  document.getElementById('share-whatsapp').setAttribute("href", `https://wa.me/?text=${url}`);
+  document.getElementById('share-tiktok').setAttribute("href", `https://www.tiktok.com/upload?url=${url}`);
 });
+
 
 </script>
 
