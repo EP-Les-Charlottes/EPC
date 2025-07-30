@@ -562,6 +562,102 @@ document.getElementById('fixedShareBtn').addEventListener('click', () => {
 
 </script>
 
+
+
+
+
+<style>
+  #atouts-trigger {
+  position: fixed;
+  top: 120px; /* ajuste selon ta bannière */
+  left: 0;
+  background: #8e44ad;
+  color: white;
+  padding: 10px 16px;
+  font-family: sans-serif;
+  cursor: pointer;
+  z-index: 1001;
+  border-radius: 0 4px 4px 0;
+}
+
+#atouts-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 98%;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: right 0.5s ease;
+  padding: 40px;
+  overflow-y: auto;
+  font-family: sans-serif;
+}
+
+#atouts-panel.show {
+  right: 0;
+}
+
+.typing-line {
+  opacity: 0;
+  animation: typing 1s steps(40, end) forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #8e44ad;
+  margin: 12px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+@keyframes typing {
+  from { width: 0; opacity: 1; }
+  to { width: 100%; opacity: 1; }
+}
+
+</style>
+
+  <!-- Bouton déclencheur -->
+<div id="atouts-trigger">Nos Atouts</div>
+
+<!-- Bloc latéral slide -->
+<div id="atouts-panel">
+  <div id="atouts-list"></div>
+</div>
+
+<script>
+
+  const atouts = [
+  "Frais d'inscription attractifs",
+  "Environnement propre et sécurisé",
+  "Salles de classe spacieuses et climatisées",
+  "Salle de bibliothèque et salle informatique",
+  "Garderie & Cantine disponibles",
+  "Infirmerie sur place",
+  "Programme français",
+  "Enseignants expérimentés et passionnés",
+  "Activités extrascolaires & ateliers spécialisés (dessin, etc.)",
+  "Rééducation de l'écriture par des spécialistes"
+];
+
+const trigger = document.getElementById('atouts-trigger');
+const panel = document.getElementById('atouts-panel');
+const list = document.getElementById('atouts-list');
+
+trigger.onclick = () => {
+  panel.classList.toggle('show');
+  list.innerHTML = '';
+  atouts.forEach((item, index) => {
+    const line = document.createElement('div');
+    line.className = 'typing-line';
+    line.textContent = item;
+    setTimeout(() => list.appendChild(line), index * 600);
+  });
+};
+
+  
+</script>
+
   
 </body>
 </html>
