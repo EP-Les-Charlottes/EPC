@@ -567,36 +567,35 @@ document.getElementById('fixedShareBtn').addEventListener('click', () => {
 
 
 <style>
-  #atouts-trigger {
+#atoutsBtn {
   position: fixed;
-  top: 120px; /* ajuste selon ta bannière */
+  top: 110px; /* ajuste selon ta bannière */
   left: 0;
   background: #8e44ad;
-  color: white;
+  color: #fff;
   padding: 10px 16px;
+  border-radius: 0 4px 4px 0;
   font-family: sans-serif;
   cursor: pointer;
-  z-index: 1001;
-  border-radius: 0 4px 4px 0;
+  z-index: 9999;
 }
 
-#atouts-panel {
+#atoutsSlide {
   position: fixed;
   top: 0;
-  right: -100%;
+  left: -100%;
   width: 98%;
   height: 100%;
-  background: white;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-  z-index: 1000;
-  transition: right 0.5s ease;
+  background: #fff;
   padding: 40px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  transition: left 0.5s ease;
+  z-index: 9998;
   overflow-y: auto;
-  font-family: sans-serif;
 }
 
-#atouts-panel.show {
-  right: 0;
+#atoutsSlide.show {
+  left: 0;
 }
 
 .typing-line {
@@ -615,19 +614,22 @@ document.getElementById('fixedShareBtn').addEventListener('click', () => {
   to { width: 100%; opacity: 1; }
 }
 
+
 </style>
 
-  <!-- Bouton déclencheur -->
-<div id="atouts-trigger">Nos Atouts</div>
 
-<!-- Bloc latéral slide -->
-<div id="atouts-panel">
-  <div id="atouts-list"></div>
+<!-- Bouton fixe à gauche -->
+<div id="atoutsBtn">🟪 Nos Atouts</div>
+
+<!-- Slide latéral -->
+<div id="atoutsSlide">
+  <div id="atoutsContent"></div>
 </div>
+
 
 <script>
 
-  const atouts = [
+const atouts = [
   "Frais d'inscription attractifs",
   "Environnement propre et sécurisé",
   "Salles de classe spacieuses et climatisées",
@@ -640,18 +642,18 @@ document.getElementById('fixedShareBtn').addEventListener('click', () => {
   "Rééducation de l'écriture par des spécialistes"
 ];
 
-const trigger = document.getElementById('atouts-trigger');
-const panel = document.getElementById('atouts-panel');
-const list = document.getElementById('atouts-list');
+const btn = document.getElementById('atoutsBtn');
+const panel = document.getElementById('atoutsSlide');
+const content = document.getElementById('atoutsContent');
 
-trigger.onclick = () => {
+btn.onclick = () => {
   panel.classList.toggle('show');
-  list.innerHTML = '';
-  atouts.forEach((item, index) => {
+  content.innerHTML = '';
+  atouts.forEach((text, i) => {
     const line = document.createElement('div');
     line.className = 'typing-line';
-    line.textContent = item;
-    setTimeout(() => list.appendChild(line), index * 600);
+    line.textContent = text;
+    setTimeout(() => content.appendChild(line), i * 1000);
   });
 };
 
