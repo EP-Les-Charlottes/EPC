@@ -581,10 +581,10 @@ document.getElementById('fixedShareBtn').addEventListener('click', () => {
 }
 
 #atoutsSlide {
-  position: fixed;
+  position: fixed; background-color:rgba(0,0,0,0.5);;
   top: 0;
   left: -110%;
-  width: 48%;
+  width: 38%;
   height: 98%;
   background: #fff;
   padding: 40px;
@@ -653,7 +653,7 @@ btn.onclick = () => {
     const line = document.createElement('div');
     line.className = 'typing-line';
     line.textContent = text;
-    setTimeout(() => content.appendChild(line), i * 1000);
+    setTimeout(() => content.appendChild(line), i * 10000);
   });
 };
 
