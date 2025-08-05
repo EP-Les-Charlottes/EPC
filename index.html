@@ -690,77 +690,111 @@ btn.onclick = () => {
 </script>
 
 
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #fff;
-      font-family: sans-serif;
-    }
-    .bloc-slider {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 90%;
-      max-width: 400px;  background: rgba(255,255,255,0.65);
-      transform: translate(-50%, -50%);
-      text-align: center;
-      overflow: hidden;
-    }
-    .bloc-paragraphe {
-      display: none;
-      padding: 20px;
-      font-size: 1.2em;
-      line-height: 1.6;
-      background: #f0f0f0;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .bloc-paragraphe.visible {
-      display: block;
-    }
-  </style>
+<style>
 
 
-  <div class="bloc-slider">
-    <div class="bloc-paragraphe visible">
-      <p>Ligne 1A<br>Ligne 2A<br>Ligne 3A</p>
-    </div>
-    <div class="bloc-paragraphe">
-      <p>Ligne 1B<br>Ligne 2B<br>Ligne 3B</p>
-    </div>
-    <div class="bloc-paragraphe">
-      <p>Ligne 1C<br>Ligne 2C<br>Ligne 3C</p>
-    </div>
+  .bloc-slider {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    max-width: 400px; background: rgba(255,255,255,0.65);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .bloc-paragraphe {
+    display: none;
+    padding: 20px;
+    font-size: 1.2em;
+    line-height: 1.6;
+    background: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .bloc-paragraphe.visible {
+    display: block;
+  }
+
+  .bloc-paragraphe p span {
+    display: block;
+    opacity: 0;
+    transform: translateX(100%);
+    animation: entreLigneDroite 0.6s forwards;
+  }
+
+  .bloc-paragraphe p span:nth-child(2) {
+    transform: translateX(-100%);
+    animation: entreLigneGauche 0.6s forwards;
+    animation-delay: 0.3s;
+  }
+
+  .bloc-paragraphe p span:nth-child(3) {
+    transform: translateX(100%);
+    animation-delay: 0.6s;
+  }
+
+  @keyframes entreLigneDroite {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes entreLigneGauche {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style>
+
+<div class="bloc-slider">
+  <div class="bloc-paragraphe visible">
+    <p>
+      <span>Ligne 1A</span>
+      <span>Ligne 2A</span>
+      <span>Ligne 3A</span>
+    </p>
   </div>
+  <div class="bloc-paragraphe">
+    <p>
+      <span>Ligne 1B</span>
+      <span>Ligne 2B</span>
+      <span>Ligne 3B</span>
+    </p>
+  </div>
+  <div class="bloc-paragraphe">
+    <p>
+      <span>Ligne 1C</span>
+      <span>Ligne 2C</span>
+      <span>Ligne 3C</span>
+    </p>
+  </div>
+</div>
 
-  <script>
-    let pos = 0;
-    const blocs = document.querySelectorAll('.bloc-paragraphe');
-    setInterval(() => {
-      blocs[pos].classList.remove('visible');
-      pos = (pos + 1) % blocs.length;
-      blocs[pos].classList.add('visible');
-    }, 3000);
-  </script>
+<script>
+  let pos = 0;
+  const blocs = document.querySelectorAll('.bloc-paragraphe');
+  setInterval(() => {
+    blocs[pos].classList.remove('visible');
+    pos = (pos + 1) % blocs.length;
+    blocs[pos].classList.add('visible');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    const lignes = blocs[pos].querySelectorAll('span');
+    lignes.forEach((ligne, i) => {
+      ligne.style.animation = '';
+      void ligne.offsetWidth;
+      ligne.style.animation =
+        i === 1
+          ? 'entreLigneGauche 0.6s forwards'
+          : 'entreLigneDroite 0.6s forwards';
+      ligne.style.animationDelay = `${i * 0.3}s`;
+    });
+  }, 3000);
+</script>
 
 
 
