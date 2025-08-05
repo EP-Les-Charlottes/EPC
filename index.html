@@ -689,6 +689,92 @@ btn.onclick = () => {
   
 </script>
 
+
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      font-family: sans-serif;
+    }
+    .bloc-slider {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      max-width: 400px;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      overflow: hidden;
+    }
+    .bloc-paragraphe {
+      display: none;
+      padding: 20px;
+      font-size: 1.2em;
+      line-height: 1.6;
+      background: #f0f0f0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .bloc-paragraphe.visible {
+      display: block;
+    }
+  </style>
+
+
+  <div class="bloc-slider">
+    <div class="bloc-paragraphe visible">
+      <p>Ligne 1A<br>Ligne 2A<br>Ligne 3A</p>
+    </div>
+    <div class="bloc-paragraphe">
+      <p>Ligne 1B<br>Ligne 2B<br>Ligne 3B</p>
+    </div>
+    <div class="bloc-paragraphe">
+      <p>Ligne 1C<br>Ligne 2C<br>Ligne 3C</p>
+    </div>
+  </div>
+
+  <script>
+    let pos = 0;
+    const blocs = document.querySelectorAll('.bloc-paragraphe');
+    setInterval(() => {
+      blocs[pos].classList.remove('visible');
+      pos = (pos + 1) % blocs.length;
+      blocs[pos].classList.add('visible');
+    }, 3000);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 </body>
 </html>
