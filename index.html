@@ -63,6 +63,60 @@
       opacity: 1;
       z-index: 1;
     }
+	
+	.modal-btn {
+  margin-left: auto;
+  padding: 0.5em 1em;
+  font-size: 1.4em;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: rgba(192, 4, 117, 0.75);
+  color: #fff;
+  padding: 2em;
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  
+}
+
+.modal-box a {
+  display: block;
+  margin: 1em 0;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.modal-close {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  border: none;
+  background: #fff;
+  color: #C00475;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+	
 
     @media (max-width: 600px) {
       .top-banner {
@@ -76,7 +130,22 @@
   <!-- Bandeau fixe -->
   <div class="top-banner" id="banner">
     <img src="tts.webp" alt="Graduation Kids">
+	<button class="modal-btn">≡Inscriptions</button>
   </div>
+  
+  
+  <!-- Fenêtre modale -->
+<div class="modal-wrapper" id="modal">
+  <div class="modal-box">
+    <a href="#">Lien 1</a>
+    <a href="#">Lien 2</a>
+    <a href="#">Lien 3</a>
+    <a href="#">Lien 4</a>
+    <button class="modal-close">X-Fermer</button>
+  </div>
+</div>
+  
+  
 
   <!-- Slider d'images en fond -->
   <div class="slider-container">
@@ -115,6 +184,23 @@
       showSlide(slideIndex);
     }, 15000); // Changement toutes les 15 secondes
   </script>
+  
+  
+  <script>
+  const modalBtn = document.querySelector('.modal-btn');
+  const modalWrap = document.getElementById('modal');
+  const closeBtn = document.querySelector('.modal-close');
+
+  modalBtn.onclick = () => {
+    modalWrap.style.display = 'flex';
+  };
+
+  closeBtn.onclick = () => {
+    modalWrap.style.display = 'none';
+  };
+</script>
+
+  
 
 </body>
 </html>
