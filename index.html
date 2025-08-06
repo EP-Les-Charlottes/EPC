@@ -82,7 +82,7 @@
   <div class="slider-container">
     <div class="slide active"><img src="ttsc.webp" alt="Image 1"></div>
     <div class="slide"><img src="tt.webp" alt="Image 2"></div>
-    <div class="slide"><img src="tts.webp" alt="Image 3"></div>
+    <div class="slide"><img src="ttsc.webp" alt="Image 3"></div>
     <div class="slide"><img src="cha.webp" alt="Image 4"></div>
     <div class="slide"><img src="epc.webp" alt="Image 5"></div>
   </div>
@@ -585,7 +585,7 @@ document.getElementById('fixedShareBtn').addEventListener('click', () => {
 
 #atoutsSlide {
   position: fixed; 
-    background-color: rgba(0, 55, 77, 0.5); /* 0.5 = 50% d’opacité */
+    background-color: rgba(0, 55, 77, 0.8); /* 0.5 = 50% d’opacité */
     color: white;
   top: 8vh;
   left: -110%;
@@ -618,7 +618,7 @@ document.getElementById('fixedShareBtn').addEventListener('click', () => {
   to { width: 100%; opacity: 1; }
 }
 
- @media (max-width: 600px) {
+ @media (max-width: 800px) {
  
  #atoutsSlide {
   position: fixed; 
@@ -636,7 +636,7 @@ document.getElementById('fixedShareBtn').addEventListener('click', () => {
 
 .typing-line {
 
-  font-size: 0.8em;
+  font-size: 1.3em;
   color: white;
 }
 
@@ -668,7 +668,8 @@ const atouts = [
   "🟪 Programme français",
   "🟪 Enseignants expérimentés et passionnés",
   "🟪 Activités extrascolaires & ateliers spécialisés (dessin, etc.)",
-  "🟪 Rééducation de l'écriture par des spécialistes"
+  "🟪 Rééducation de l'écriture par des spécialistes",
+  "🟪 Contact : +241 77 68 38 68 ou +241 62 68 38 68."
 ];
 
 const btn = document.getElementById('atoutsBtn');
@@ -695,29 +696,29 @@ btn.onclick = () => {
 
   .bloc-slider {
     position: fixed;
-    top: 45%;
+    top: 50%;
     left: 50%;
-    width: 70%;    
+    width: 100%; 
     transform: translate(-50%, -50%);
     text-align: center;
-    overflow: hidden;
+    overflow: hidden; z-index:-2;
   }
 
   .bloc-paragraphe {
     display: none;
     padding: 20px;
-    font-size: 1.2em;
-    line-height: 1.6;
+    font-size: 1.8em;
+    line-height: 1.9;
     background: rgba(55,55,255,0.65);
 	color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index:3;
   }
   
   .bloc-paragraphe img {
-width:90%; height:200px; border-radius:3px; overflow-y:sroll;
+width:50%; height:200px; border-radius:3px; overflow-y:sroll;
 }
-  .bloc-paragraphe.visible {
+  .bloc-paragraphe.visible { 
     display: block;
   }
 
@@ -725,12 +726,12 @@ width:90%; height:200px; border-radius:3px; overflow-y:sroll;
     display: block;
     opacity: 0;
     transform: translateX(100%);
-    animation: entreLigneDroite 0.6s forwards;
+    animation: entreLigneDroite 0.9s forwards;
   }
 
   .bloc-paragraphe p span:nth-child(2) {
     transform: translateX(-100%);
-    animation: entreLigneGauche 0.6s forwards;
+    animation: entreLigneGauche 0.9s forwards;
     animation-delay: 0.3s;
   }
 
@@ -754,17 +755,20 @@ width:90%; height:200px; border-radius:3px; overflow-y:sroll;
   }
   
   
-   @media (max-width: 600px) {
+   @media (max-width: 800px) {
    
      .bloc-slider {
     position: fixed;
-    top: 50%;
+    top: 48%;
     left: 50%;
     width: 95%;
     transform: translate(-50%, -50%);
     text-align: center;
     overflow-y: sroll;
   }
+  
+  .bloc-paragraphe {
+   font-size: 1.3em; }
  
    .bloc-paragraphe img {
 width:100%; height:100px; border-radius:3px;
@@ -777,35 +781,36 @@ width:100%; height:100px; border-radius:3px;
 <div class="bloc-slider">
   <div class="bloc-paragraphe visible">
     <p>
-      <span><img src="tts.webp" alt="Graduation Kids"></span>
-      <span>Ligne 2A</span>
-      <span>🟪 ⚠️  Frais d'inscription attractifs</span>
-	    <span>🟪 ⚠️  Frais d'inscription attractifs</span>
-      <span>Ligne 2C</span>
-      <span>Ligne 3C</span>
+      <span><img src="ttsc.webp" alt="Graduation Kids"></span>
+	    <span>🟪 ✅  Frais d'inscription attractifs</span>
+      <span>✅ Programme français</span>
+      <span>✅ Enseignants expérimentés et passionnés</span>
+	  <span>⚠️ Salles de classe spacieuses et climatisées</span>
     </p>
   </div>
   <div class="bloc-paragraphe">
     <p>
-      <span>Ligne 1B</span>
-      <span>🟪 ⚠️  Frais d'inscription attractifs</span>
-      <span>Ligne 3B</span>
-	    <span>🟪 ⚠️  Frais d'inscription attractifs</span>
-      <span>Ligne 2C</span>
-      <span>Ligne 3C</span>
+      
+      <span>🟪 ✅  Rééducation de l'écriture par des spécialistes</span>
+      <span>✅ Programme français</span>
+	    <span>🟪 ⚠️  Activités extrascolaires & ateliers spécialisés (dessin, etc.)</span>
+      <span>✅ ⚠️ Salle de bibliothèque et salle informatique</span>
+      <span>⚠️ Salles de classe spacieuses et climatisées</span>
     </p>
   </div>
   <div class="bloc-paragraphe">
-    <p>  <span>🟪 ⚠️  Frais d'inscription attractifs</span>
-      <span>Ligne 2C</span>
-      <span>Ligne 3C</span>
+    <p>  <span>🟪 ⚠️  Garderie & Cantine disponibles</span>
+      <span>✅ Infirmerie sur place</span>
+      <span>⚠️ Salles de classe spacieuses et climatisées</span>
       <span>🟪 ⚠️  Frais d'inscription attractifs</span>
-      <span>Ligne 2C</span>
-      <span>Ligne 3C</span>
+      <span>✅ ⚠️ Environnement propre et sécurisé</span>
+      <span>✅ Contact : +241 77 68 38 68 ou +241 62 68 38 68. </span>
     </p>
   </div>
 </div>
 
+ 
+   
 <script>
   let pos = 0;
   const blocs = document.querySelectorAll('.bloc-paragraphe');
@@ -824,7 +829,7 @@ width:100%; height:100px; border-radius:3px;
           : 'entreLigneDroite 0.6s forwards';
       ligne.style.animationDelay = `${i * 0.3}s`;
     });
-  }, 13000);
+  }, 8000);
 </script>
 
 
