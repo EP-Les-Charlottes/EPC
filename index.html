@@ -801,15 +801,19 @@ btn.onclick = () => {
   }
 
   .bloc-paragraphe {
-    display: none;
-    padding: 20px;
-    font-size: 1.8em;
-    line-height: 1.9;
-    background: rgba(55,55,255,0.65);
-	color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index:3;
-  }
+  display: none;
+  padding: 20px;
+  font-size: 1.8em;
+  line-height: 1.9;
+  background: rgba(55,55,255,0.65);
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 3;
+  max-height: 70vh;              /* ✅ limite la hauteur */
+  overflow-y: auto;              /* ✅ active le scroll si débordement */
+}
+
   
   .bloc-paragraphe img {
 width:50%; height:200px; border-radius:3px; 
@@ -851,25 +855,29 @@ width:50%; height:200px; border-radius:3px;
   }
   
   
-   @media (max-width: 800px) {
-   
-     .bloc-slider {
-    position: fixed;
+@media (max-width: 800px) {
+  .bloc-slider {
     top: 48%;
     left: 50%;
     width: 95%;
     transform: translate(-50%, -50%);
     text-align: center;
-    overflow-y: sroll;
+    overflow-y: scroll;          /* ✅ correction ici */
   }
-  
+
   .bloc-paragraphe {
-   font-size: 0.8em; }
- 
-   .bloc-paragraphe img {
-width:100%; height:100px; border-radius:3px;
+    font-size: 0.8em;
+    max-height: 60vh;            /* ✅ scroll aussi en mobile */
+    overflow-y: auto;
+  }
+
+  .bloc-paragraphe img {
+    width: 100%;
+    height: 100px;
+    border-radius: 3px;
+  }
 }
-}  
+
   
   
 </style>
