@@ -83,10 +83,13 @@
   background: rgba(0,0,0,0.4);
   display: none;
   justify-content: center;
-  align-items: flex-start; /* ✅ modifié pour permettre le scroll */
+  align-items: flex-start;
   z-index: 1000;
-  padding-top: 5vh;         /* ✅ pour garder un peu d’espace en haut */
+  padding-top: 5vh;
+  overflow-y: auto; /* ✅ ajouté ici */
+  -webkit-overflow-scrolling: touch; /* ✅ pour iOS */
 }
+
 
 
    .modal-box {
@@ -124,12 +127,9 @@
       .top-banner {
         padding: 0 0.5em;
       }
-  	     .modal-box {
-  overflow-y: auto;         /* ✅ active le scroll */
-}
-
 		
     }
+	  
   </style>
 </head>
 <body>
