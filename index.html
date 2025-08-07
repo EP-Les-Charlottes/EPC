@@ -97,13 +97,17 @@
   
 }
 
-.modal-box a {
-  display: block;
-  margin: 1em 0;
-  text-decoration: none;
+.modal-box {
+  background: rgba(192, 4, 117, 0.75);
   color: #fff;
-  font-weight: bold;
+  padding: 2em;
+  border-radius: 10px;
+  text-align: center;
+  width: 70%;
+  max-height: 80vh;         /* ✅ limite la hauteur visible */
+  overflow-y: auto;         /* ✅ scroll vertical si débordement */
 }
+
 
 .modal-close {
   margin-top: 1em;
