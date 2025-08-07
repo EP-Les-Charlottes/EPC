@@ -787,20 +787,21 @@ btn.onclick = () => {
 
 
 <style>
-
-
   .bloc-slider {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100%; 
-    transform: translate(-50%, -50%);
+    top: 8vh;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 8vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
- z-index:-2;
+    z-index: -2;
   }
 
   .bloc-paragraphe {
-    position:fixed;
+    position: relative;
     display: none;
     padding: 20px;
     font-size: 1.8em;
@@ -808,13 +809,17 @@ btn.onclick = () => {
     background: rgba(55,55,255,0.65);
     color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index:3;  
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 3;
   }
-  
+
   .bloc-paragraphe img {
-width:50%; height:200px; border-radius:3px; 
-}
-  .bloc-paragraphe.visible { 
+    width: 50%;
+    height: 200px;
+    border-radius: 3px;
+  }
+
+  .bloc-paragraphe.visible {
     display: block;
   }
 
@@ -849,64 +854,58 @@ width:50%; height:200px; border-radius:3px;
       opacity: 1;
     }
   }
-  
-  
-   @media (max-width: 800px) {
-   
-     .bloc-slider {
-    position: fixed;
-    top: 48%;
-    left: 50%;
-    width: 95%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    overflow-y: sroll;
+
+  @media (max-width: 800px) {
+    .bloc-slider {
+      top: 5vh;
+      height: auto;
+      padding: 10px;
+    }
+
+    .bloc-paragraphe {
+      font-size: 0.8em;
+      top: 5vh;
+    }
+
+    .bloc-paragraphe img {
+      width: 100%;
+      height: 90px;
+      border-radius: 3px;
+    }
   }
-  
-  .bloc-paragraphe {
-   font-size: 0.8em; top:5vh; }
- 
-   .bloc-paragraphe img {
-width:100%; height:90px; border-radius:3px;
-}
-}  
-  
-  
 </style>
 
 <div class="bloc-slider">
   <div class="bloc-paragraphe visible">
     <p>
       <span><img src="ttsc.webp" alt="Graduation Kids"></span>
-	    <span>🟪 ✅  Frais d'inscription attractifs</span>
+      <span>🟪 ✅  Frais d'inscription attractifs</span>
       <span>✅ Programme français</span>
       <span>✅ Enseignants expérimentés et passionnés</span>
-	  <span>⚠️ Salles de classe spacieuses et climatisées</span>
+      <span>⚠️ Salles de classe spacieuses et climatisées</span>
     </p>
   </div>
   <div class="bloc-paragraphe">
     <p>
-      
       <span>🟪 ✅  Rééducation de l'écriture par des spécialistes</span>
       <span>✅ Programme français</span>
-	    <span>🟪 ⚠️  Activités extrascolaires & ateliers spécialisés (dessin, etc.)</span>
+      <span>🟪 ⚠️  Activités extrascolaires & ateliers spécialisés (dessin, etc.)</span>
       <span>✅ ⚠️ Salle de bibliothèque et salle informatique</span>
       <span>⚠️ Salles de classe spacieuses et climatisées</span>
     </p>
   </div>
   <div class="bloc-paragraphe">
-    <p>  <span>🟪 ⚠️  Garderie & Cantine disponibles</span>
+    <p>
+      <span>🟪 ⚠️  Garderie & Cantine disponibles</span>
       <span>✅ Infirmerie sur place</span>
       <span>⚠️ Salles de classe spacieuses et climatisées</span>
       <span>🟪 ⚠️  Frais d'inscription attractifs</span>
       <span>✅ ⚠️ Environnement propre et sécurisé</span>
-      <span>✅ Contact : +241 77 68 38 68 ou +241 62 68 38 68. </span>
+      <span>✅ Contact : +241 77 68 38 68 ou +241 62 68 38 68.</span>
     </p>
   </div>
 </div>
 
- 
-   
 <script>
   let pos = 0;
   const blocs = document.querySelectorAll('.bloc-paragraphe');
