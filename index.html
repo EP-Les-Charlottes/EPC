@@ -63,64 +63,59 @@
       opacity: 1;
       z-index: 1;
     }
-	
-	.modal-btn {
-  margin-left: auto;
-  padding: 0.5em 1em;
-  font-size: 1.4em;
-  background: transparent;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
 
-.modal-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0,0,0,0.4);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
+    .modal-btn {
+      margin-left: auto;
+      padding: 0.5em 1em;
+      font-size: 1.4em;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
 
-.modal-box {
-  background: rgba(192, 4, 117, 0.75);
-  color: #fff;
-  padding: 2em;
-  border-radius: 10px;
-  text-align: center;
-  width: 80%;
-  
-}
+    .modal-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
 
-.modal-box {
-  background: rgba(192, 4, 117, 0.75);
-  color: #fff;
-  padding: 2em;
-  border-radius: 10px;
-  text-align: center;
-  width: 70%;
-  max-height: 80vh;         /* ✅ limite la hauteur visible */
-  overflow-y: auto;         /* ✅ scroll vertical si débordement */
-}
+    .modal-box {
+      background: rgba(192, 4, 117, 0.75);
+      color: #fff;
+      padding: 2em;
+      border-radius: 10px;
+      text-align: center;
+      width: 80%;
+      max-height: 85vh;         /* ✅ Ajouté pour limiter la hauteur */
+      overflow-y: auto;         /* ✅ Ajouté pour permettre le scroll */
+    }
 
+    .modal-box a {
+      display: block;
+      margin: 1em 0;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+    }
 
-.modal-close {
-  margin-top: 1em;
-  padding: 0.5em 1em;
-  border: none;
-  background: #fff;
-  color: #C00475;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-	
+    .modal-close {
+      margin-top: 1em;
+      padding: 0.5em 1em;
+      border: none;
+      background: #fff;
+      color: #C00475;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
     @media (max-width: 600px) {
       .top-banner {
@@ -134,31 +129,30 @@
   <!-- Bandeau fixe -->
   <div class="top-banner" id="banner">
     <img src="tts.webp" alt="Graduation Kids">
-	<button class="modal-btn">≡Inscriptions</button>
+    <button class="modal-btn">≡Inscriptions</button>
   </div>
-  
-  
+
   <!-- Fenêtre modale -->
-  <!-- Fenêtre modale -->
-<div class="modal-wrapper" id="modal">
-  <div class="modal-box">
-<h2><a href="tel:+24177146442">📞 Contactez notre direction pour vos inscriptions!</a></h2>
-<a href="tel:+24162683868">📞 +241 62 68 38 68</a>
-<a href="tel:+24177683868">📞 +241 77 68 38 68</a>
+  <div class="modal-wrapper" id="modal">
+    <div class="modal-box">
+      <h2><a href="tel:+24177146442">📞 Contactez notre direction pour vos inscriptions!</a></h2>
+      <a href="tel:+24162683868">📞 +241 62 68 38 68</a>
+      <a href="tel:+24177683868">📞 +241 77 68 38 68</a>
 
-<a href="https://wa.me/+24162683868" target="_blank"><img src="WhatsApp.svg" alt="WhatsApp" style="width:45px; height:35px;"> : +241 62 68 38 68</a>
-<a href="https://wa.me/+24177683868" target="_blank"><img src="WhatsApp.svg" alt="WhatsApp" style="width:45px; height:35px;"> : +241 77 68 38 68</a>
+      <a href="https://wa.me/+24162683868" target="_blank">
+        <img src="WhatsApp.svg" alt="WhatsApp" style="width:45px; height:35px;"> : +241 62 68 38 68
+      </a>
+      <a href="https://wa.me/+24177683868" target="_blank">
+        <img src="WhatsApp.svg" alt="WhatsApp" style="width:45px; height:35px;"> : +241 77 68 38 68
+      </a>
 
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=ecolelescharlottes@yahoo.com&su=Demande d'inscription&body=Bonjour, je souhaite inscrire mon enfant..." target="_blank">
- <h3> @ Gmail => Demande d'inscription a: ecolelescharlottes@yahoo.com </h3>
-</a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ecolelescharlottes@yahoo.com&su=Demande d'inscription&body=Bonjour, je souhaite inscrire mon enfant..." target="_blank">
+        <h3>@ Gmail => Demande d'inscription à : ecolelescharlottes@yahoo.com</h3>
+      </a>
 
-
-    <button class="modal-close">X-Fermer</button>
+      <button class="modal-close">X-Fermer</button>
+    </div>
   </div>
-</div>
-  
-  
 
   <!-- Slider d'images en fond -->
   <div class="slider-container">
@@ -170,9 +164,9 @@
   </div>
 
   <script>
-    // Animation de fond du bandeau (si tu veux changer les couleurs)
+    // Animation de fond du bandeau
     const banner = document.getElementById('banner');
-    const colors = ['#C00475', '#642EFE', '#009B4D']; // Tu peux ajouter d’autres couleurs ici
+    const colors = ['#C00475', '#642EFE', '#009B4D'];
     let colorIndex = 0;
 
     setInterval(() => {
@@ -180,7 +174,7 @@
       banner.style.backgroundColor = colors[colorIndex];
     }, 15000);
 
-    // Animation du slider en fondu
+    // Slider d’images
     const slides = document.querySelectorAll('.slide');
     let slideIndex = 0;
 
@@ -190,33 +184,31 @@
       });
     }
 
-    showSlide(slideIndex); // Afficher dès le chargement
+    showSlide(slideIndex);
 
     setInterval(() => {
       slideIndex = (slideIndex + 1) % slides.length;
       showSlide(slideIndex);
-    }, 15000); // Changement toutes les 15 secondes
+    }, 15000);
   </script>
-  
-  
+
   <script>
-  const modalBtn = document.querySelector('.modal-btn');
-  const modalWrap = document.getElementById('modal');
-  const closeBtn = document.querySelector('.modal-close');
+    const modalBtn = document.querySelector('.modal-btn');
+    const modalWrap = document.getElementById('modal');
+    const closeBtn = document.querySelector('.modal-close');
 
-  modalBtn.onclick = () => {
-    modalWrap.style.display = 'flex';
-  };
+    modalBtn.onclick = () => {
+      modalWrap.style.display = 'flex';
+    };
 
-  closeBtn.onclick = () => {
-    modalWrap.style.display = 'none';
-  };
-</script>
-
-  
+    closeBtn.onclick = () => {
+      modalWrap.style.display = 'none';
+    };
+  </script>
 
 </body>
 </html>
+
 
 
 
