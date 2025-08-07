@@ -935,6 +935,7 @@ width:100%; height:100px; border-radius:3px;
 
 
 
+
 <style>
   #modalBloc {
     position: fixed;
@@ -944,7 +945,8 @@ width:100%; height:100px; border-radius:3px;
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 9999; overflow-y: auto;
+
   }
   #modalBloc .contenu {
     background: white;
@@ -971,12 +973,14 @@ width:100%; height:100px; border-radius:3px;
       <a href="https://wa.me/24177146442" target="_blank">
         <button style="background-color:green; border-radius:8px;">  
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" width="20" height="20">  
-          +24177146442
+          Contactez-nous!
         </button>
       </a>  
     </p>
 
-    <button onclick="window.location.href='https://d-web-generator.github.io/D-web/'">Continuer</button>
+    <button onclick="window.location.href='https://d-web-generator.github.io/D-web/'">Visitez-nous </button> ou
+	<button><a href="tel:+24165979921"><h3>📞 +241 66 97 99 21</h3> </a></button>
+	
   </div>
 </div>
 
@@ -1019,7 +1023,7 @@ width:100%; height:100px; border-radius:3px;
     setTimeout(() => {
       updateModal();
       setInterval(updateModal, INTERVALLE);
-    }, 15000);
+    }, 10000);
   }
 </script>
 
@@ -1037,9 +1041,6 @@ width:100%; height:100px; border-radius:3px;
     }
   });
 </script>
-
-
-
 
 </body>
 </html>
