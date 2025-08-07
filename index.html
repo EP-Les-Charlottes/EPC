@@ -577,7 +577,7 @@
   #fixedShareBtn {
   position: fixed; border-radius:12px; 
   right: 10px;
-  bottom: 15%;
+  bottom: 13%;
   width: 45px;
   height: 45px;
   background: #C00475;
@@ -670,7 +670,7 @@ document.getElementById('fixedShareBtn').addEventListener('click', () => {
   left: 0;
   background: #8e44ad;
   color: #fff;
-  padding: 5px 16px;
+  padding: 10px 16px;
   border-radius: 0 4px 4px 0;
   font-family: sans-serif;
   cursor: pointer;
@@ -787,39 +787,33 @@ btn.onclick = () => {
 
 
 <style>
+
+
   .bloc-slider {
     position: fixed;
-    top: 8vh;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 8vh);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    top: 50%;
+    left: 50%;
+    width: 100%; 
+    transform: translate(-50%, -50%);
     text-align: center;
-    z-index: -2;
+    overflow: hidden; z-index:-2;
   }
 
-  .bloc-paragraphe {
-    position: relative;
+  .bloc-paragraphe {position:fixed;
     display: none;
     padding: 20px;
     font-size: 1.8em;
     line-height: 1.9;
     background: rgba(55,55,255,0.65);
-    color: #fff;
+	color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    z-index: 3;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index:3;
   }
-
+  
   .bloc-paragraphe img {
-    width: 50%;
-    height: 200px;
-    border-radius: 3px;
-  }
-
-  .bloc-paragraphe.visible {
+width:50%; height:200px; border-radius:3px; overflow-y:sroll;
+}
+  .bloc-paragraphe.visible { 
     display: block;
   }
 
@@ -854,58 +848,64 @@ btn.onclick = () => {
       opacity: 1;
     }
   }
-
-  @media (max-width: 800px) {
-    .bloc-slider {
-      top: 5vh;
-      height: auto;
-      padding: 10px;
-    }
-
-    .bloc-paragraphe {
-      font-size: 0.8em;
-      top: 5vh;
-    }
-
-    .bloc-paragraphe img {
-      width: 100%;
-      height: 90px;
-      border-radius: 3px;
-    }
+  
+  
+   @media (max-width: 800px) {
+   
+     .bloc-slider {
+    position: fixed;
+    top: 48%;
+    left: 50%;
+    width: 95%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    overflow-y: sroll;
   }
+  
+  .bloc-paragraphe {
+   font-size: 0.8em; top:10vh; }
+ 
+   .bloc-paragraphe img {
+width:100%; height:90px; border-radius:3px;
+}
+}  
+  
+  
 </style>
 
 <div class="bloc-slider">
   <div class="bloc-paragraphe visible">
     <p>
       <span><img src="ttsc.webp" alt="Graduation Kids"></span>
-      <span>🟪 ✅  Frais d'inscription attractifs</span>
+	    <span>🟪 ✅  Frais d'inscription attractifs</span>
       <span>✅ Programme français</span>
       <span>✅ Enseignants expérimentés et passionnés</span>
-      <span>⚠️ Salles de classe spacieuses et climatisées</span>
+	  <span>⚠️ Salles de classe spacieuses et climatisées</span>
     </p>
   </div>
   <div class="bloc-paragraphe">
     <p>
+      
       <span>🟪 ✅  Rééducation de l'écriture par des spécialistes</span>
       <span>✅ Programme français</span>
-      <span>🟪 ⚠️  Activités extrascolaires & ateliers spécialisés (dessin, etc.)</span>
+	    <span>🟪 ⚠️  Activités extrascolaires & ateliers spécialisés (dessin, etc.)</span>
       <span>✅ ⚠️ Salle de bibliothèque et salle informatique</span>
       <span>⚠️ Salles de classe spacieuses et climatisées</span>
     </p>
   </div>
   <div class="bloc-paragraphe">
-    <p>
-      <span>🟪 ⚠️  Garderie & Cantine disponibles</span>
+    <p>  <span>🟪 ⚠️  Garderie & Cantine disponibles</span>
       <span>✅ Infirmerie sur place</span>
       <span>⚠️ Salles de classe spacieuses et climatisées</span>
       <span>🟪 ⚠️  Frais d'inscription attractifs</span>
       <span>✅ ⚠️ Environnement propre et sécurisé</span>
-      <span>✅ Contact : +241 77 68 38 68 ou +241 62 68 38 68.</span>
+      <span>✅ Contact : +241 77 68 38 68 ou +241 62 68 38 68. </span>
     </p>
   </div>
 </div>
 
+ 
+   
 <script>
   let pos = 0;
   const blocs = document.querySelectorAll('.bloc-paragraphe');
@@ -943,8 +943,7 @@ btn.onclick = () => {
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 9999; overflow-y: auto;
-
+    z-index: 9999;
   }
   #modalBloc .contenu {
     background: white;
@@ -971,13 +970,12 @@ btn.onclick = () => {
       <a href="https://wa.me/24177146442" target="_blank">
         <button style="background-color:green; border-radius:8px;">  
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" width="20" height="20">  
-          Contactez-nous!
+          +24177146442
         </button>
       </a>  
     </p>
 
-    <button onclick="window.location.href='https://d-web-generator.github.io/D-web/'">Visitez-nous </button> ou
-	<button><a href="tel:+24165979921"><h3>📞 +241 66 97 99 21</h3> </a></button>
+    <button onclick="window.location.href='https://d-web-generator.github.io/D-web/'">Visitez nous </button> 
 	
   </div>
 </div>
