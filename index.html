@@ -999,63 +999,7 @@ width:50%; height:200px; border-radius:3px;
   </div>
 </div>
 
-<script>
-  const DUREE_JOURS = 06;
-  const CLE_STORAGE = "debut_session_dweb";
-  const TEMPS_AFFICHAGE = 7000; // 7s
-  const INTERVALLE = 25000;     // 25s
 
-  const modalBloc = document.getElementById("modalBloc");
-
-  if (!localStorage.getItem(CLE_STORAGE)) {
-    localStorage.setItem(CLE_STORAGE, Date.now().toString());
-  }
-
-  const debut = parseInt(localStorage.getItem(CLE_STORAGE), 10);
-  const limite = debut + DUREE_JOURS * 24 * 60 * 60 * 1000;
-  const maintenant = Date.now();
-
-  if (maintenant >= limite) {
-    // 🔒 Session expirée
-    modalBloc.style.display = "flex";
-    modalBloc.querySelector(".contenu h2").textContent = "Session expirée";
-    modalBloc.querySelector(".contenu p").textContent =
-      "Accéder à la session Pro de votre flyer";
-  } else {
-    // ⏳ Session temporaire
-    const updateModal = () => {
-      modalBloc.style.display = "flex";
-      modalBloc.querySelector(".contenu h2").textContent = "⏳ Accès temporaire ⏳";
-      modalBloc.querySelector(".contenu p").textContent =
-        `Cette session expire dans ${Math.ceil((limite - Date.now()) / 86400000)} jours.`;
-
-      setTimeout(() => {
-        modalBloc.style.display = "none";
-      }, TEMPS_AFFICHAGE);
-    };
-
-    // 🕒 Première apparition après 15s, puis toutes les 25s
-    setTimeout(() => {
-      updateModal();
-      setInterval(updateModal, INTERVALLE);
-    }, 10000);
-  }
-</script>
-
-<script>
-  // 🔒 Protection anti-inspection
-  document.addEventListener("contextmenu", e => e.preventDefault());
-  document.addEventListener("keydown", e => {
-    if (
-      e.key === "F12" ||
-      (e.ctrlKey && e.shiftKey && e.key === "I") ||
-      (e.ctrlKey && e.key === "U") ||
-      (e.ctrlKey && e.shiftKey && e.key === "J")
-    ) {
-      e.preventDefault();
-    }
-  });
-</script>
 
 </body>
 </html>
